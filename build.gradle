@@ -3,7 +3,7 @@ apply plugin: 'application'
 apply plugin: 'eclipse'
 
 // Java version
-sourceCompatibility = '1.8'
+sourceCompatibility = '1.7'
 
 // Java project version number
 version = '1.0'
