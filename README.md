@@ -11,13 +11,6 @@ Make sure Git is installed and you have internet connection
 ```
 $> git clone https://github.com/luiscarlin/game-of-life.git
 $> cd game-of-life
-```
-Windows
-```
-$> gradlew build
-```
-*nix
-```
 $> ./gradlew build
 ```
 
@@ -25,3 +18,5 @@ $> ./gradlew build
 ```
 $> ./gradlew run
 ```
+
+
