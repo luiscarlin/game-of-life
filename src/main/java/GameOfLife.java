@@ -3,30 +3,34 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Game {
+public class GameOfLife {
 
 	private int size;
 	private List<List<Integer>> grid;
 
-	public Game() {
+	public GameOfLife() {
 		grid = new ArrayList<List<Integer>>();
+		size = 0;
 	}
-	
+
 	public int getSize() {
 		return size;
 	}
 
 	public void setSize(int size) {
 		
-		if (size < 0)
-		{
-			throw new IllegalArgumentException();
+		if (size <= 0) {
+			throw new IllegalArgumentException("Grid cannot be of size " + size);
 		}
 		
 		this.size = size;
 	}
 	
 	public void createGrid() {
+		
+		if (size == 0) { 
+			throw new RuntimeException("Size for the grid has not been set");
+		}
 		
 		for (int i = 0; i < size; i++) { 
 			
@@ -47,11 +51,11 @@ public class Game {
 	public void setAlive(int x, int y) { 
 		
 		if ((x < 0) || (y < 0)) { 
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Cannot provide negative coordinates");
 		}
 		
 		if ((x >= size) || (y >= size)) { 
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("(" + x + ", " + y + ") is outside of the grid");
 		}
 		
 		grid.get(x).add(y, 1);
@@ -60,7 +64,7 @@ public class Game {
 	public void setAlive(int id) { 
 		
 		if ((id < 0) || (id > Math.pow(size, 2) - 1)) { 
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("id " + id + " is outside of the grid");
 		}
 		
 		// loop through list
@@ -81,11 +85,11 @@ public class Game {
 	public boolean isAlive(int x, int y) { 
 		
 		if ((x < 0) || (y < 0)) { 
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Cannot provide negative coordinates");
 		}
 		
 		if ((x >= size) || (y >= size)) { 
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("(" + x + ", " + y + ") is outside of the grid");
 		}
 		
 		if(grid.get(x).get(y) == 1) 
@@ -98,7 +102,7 @@ public class Game {
 	public boolean isAlive(int id) { 
 		
 		if ((id < 0) || (id > Math.pow(size, 2) - 1)) { 
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("id " + id + " is outside of the grid");
 		}
 		
 		// loop through list
@@ -127,8 +131,6 @@ public class Game {
 			
 			for (int j = 0; j < size; j++) { 
 				System.out.print(grid.get(i).get(j) + " "); 
-				
-				//System.out.print("(" + i + ","  + j + ") "); 
 			}
 			
 			System.out.println();
@@ -136,7 +138,7 @@ public class Game {
 	}
 	
 	public static void main(String[] args) throws InterruptedException, IOException { 
-		Game game = new Game() ;
+		GameOfLife game = new GameOfLife() ;
 		game.setSize(10);
 		game.createGrid();
 		
@@ -220,8 +222,8 @@ public class Game {
 			if (isAlive(getTopId(id))) numNeighborsAlive++; 
 		}
 		else {
-			throw new RuntimeException("Unexplained Error!!!");
-		};	
+			throw new RuntimeException("Cannot find the location of the id in the grid");
+		}	
 		
 		return numNeighborsAlive;
 	}

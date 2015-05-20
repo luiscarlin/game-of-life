@@ -3,13 +3,13 @@ import static org.junit.Assert.*;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class TestGame {
+public class GameOfLifeTest {
 	
-	static Game game; 
+	static GameOfLife game; 
 	
 	@BeforeClass 
 	public static void setup() { 
-		game = new Game(); 
+		game = new GameOfLife(); 
 	}
 
 	@Test

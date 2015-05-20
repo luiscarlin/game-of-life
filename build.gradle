@@ -9,11 +9,11 @@ sourceCompatibility = '1.7'
 version = '1.0'
 
 // main class when running
-mainClassName = 'Game'
+mainClassName = 'GameOfLife'
 
 // manifest content for the jar
 jar { 
-	manifest.attributes 'Main-Class' : 'Game'
+	manifest.attributes 'Main-Class' : 'GameOfLife'
 }
 
 repositories {
