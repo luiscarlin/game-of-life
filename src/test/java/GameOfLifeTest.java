@@ -4,7 +4,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class GameOfLifeTest {
-	
+	/*
+	 * todo: needs to be convrerted
 	static GameOfLife game; 
 	
 	@BeforeClass 
@@ -173,4 +174,15 @@ public class GameOfLifeTest {
 		assertEquals(1, game.getNumberAliveNeighbors(7));
 		assertEquals(2, game.getNumberAliveNeighbors(8));
 	}	
+	
+	@Test 
+	public void whenTheUserRequestsForTheIdTheCorrectOneIsReturned() { 
+		game.setSize(3);
+		game.createGrid(); 
+		
+		game.setAlive(0,0);
+		assertTrue(game.isAlive(0));
+	}
+	
+	*/
 }
